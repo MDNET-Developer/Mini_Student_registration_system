@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbTelebelerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TBL_Dersler">
+    <Key>
+      <PropertyRef Name="DersID" />
+    </Key>
+    <Property Name="DersID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DersAD" Type="String" MaxLength="77" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TBL_Qeydler" Relationship="Self.FK_TBL_Qeydler_TBL_Dersler" FromRole="TBL_Dersler" ToRole="TBL_Qeydler" />
+  </EntityType>
+  <EntityType Name="TBL_Qeydler">
+    <Key>
+      <PropertyRef Name="QeydID" />
+    </Key>
+    <Property Name="QeydID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Telebe" Type="Int32" />
+    <Property Name="Ders" Type="Int32" />
+    <Property Name="Imtahan1" Type="Int16" />
+    <Property Name="Imtahan2" Type="Int16" />
+    <Property Name="Imtahan3" Type="Int16" />
+    <Property Name="Ortalama" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="Veziyyet" Type="Boolean" />
+    <NavigationProperty Name="TBL_Dersler" Relationship="Self.FK_TBL_Qeydler_TBL_Dersler" FromRole="TBL_Qeydler" ToRole="TBL_Dersler" />
+    <NavigationProperty Name="TBL_Telebeler" Relationship="Self.FK_TBL_Qeydler_TBL_Telebeler" FromRole="TBL_Qeydler" ToRole="TBL_Telebeler" />
+  </EntityType>
+  <EntityType Name="TBL_Telebeler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Foto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBL_Qeydler" Relationship="Self.FK_TBL_Qeydler_TBL_Telebeler" FromRole="TBL_Telebeler" ToRole="TBL_Qeydler" />
+  </EntityType>
+  <Association Name="FK_TBL_Qeydler_TBL_Dersler">
+    <End Role="TBL_Dersler" Type="Self.TBL_Dersler" Multiplicity="0..1" />
+    <End Role="TBL_Qeydler" Type="Self.TBL_Qeydler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_Dersler">
+        <PropertyRef Name="DersID" />
+      </Principal>
+      <Dependent Role="TBL_Qeydler">
+        <PropertyRef Name="Ders" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_Qeydler_TBL_Telebeler">
+    <End Role="TBL_Telebeler" Type="Self.TBL_Telebeler" Multiplicity="0..1" />
+    <End Role="TBL_Qeydler" Type="Self.TBL_Qeydler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_Telebeler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_Qeydler">
+        <PropertyRef Name="Telebe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbTelebelerEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TBL_Dersler" EntityType="Self.TBL_Dersler" />
+    <EntitySet Name="TBL_Qeydler" EntityType="Self.TBL_Qeydler" />
+    <EntitySet Name="TBL_Telebeler" EntityType="Self.TBL_Telebeler" />
+    <AssociationSet Name="FK_TBL_Qeydler_TBL_Dersler" Association="Self.FK_TBL_Qeydler_TBL_Dersler">
+      <End Role="TBL_Dersler" EntitySet="TBL_Dersler" />
+      <End Role="TBL_Qeydler" EntitySet="TBL_Qeydler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_Qeydler_TBL_Telebeler" Association="Self.FK_TBL_Qeydler_TBL_Telebeler">
+      <End Role="TBL_Telebeler" EntitySet="TBL_Telebeler" />
+      <End Role="TBL_Qeydler" EntitySet="TBL_Qeydler" />
+    </AssociationSet>
+    <EntitySet Name="TBL_Klublar" EntityType="dbTelebelerModel.TBL_Klublar" />
+    <FunctionImport Name="TelebeQeydleri" ReturnType="Collection(dbTelebelerModel.TelebeQeydleri_Result)" />
+  </EntityContainer>
+  <EntityType Name="TBL_Klublar">
+    <Key>
+      <PropertyRef Name="KlubID" />
+    </Key>
+    <Property Name="KlubID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KlubAD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="TelebeQeydleri_Result">
+    <Property Type="Int32" Name="QeydID" Nullable="false" />
+    <Property Type="String" Name="Telebe" Nullable="true" MaxLength="101" />
+    <Property Type="String" Name="DersAD" Nullable="true" MaxLength="77" />
+    <Property Type="Int16" Name="Imtahan1" Nullable="true" />
+    <Property Type="Int16" Name="Imtahan2" Nullable="true" />
+    <Property Type="Int16" Name="Imtahan3" Nullable="true" />
+    <Property Type="Decimal" Name="Ortalama" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="Boolean" Name="Veziyyet" Nullable="true" />
+  </ComplexType>
+</Schema>

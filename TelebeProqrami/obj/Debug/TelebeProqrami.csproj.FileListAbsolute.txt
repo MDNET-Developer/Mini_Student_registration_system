@@ -1,0 +1,15 @@
+C:\Users\Murad\source\repos\TelebeProqrami\TelebeProqrami\bin\Debug\TelebeProqrami.exe.config
+C:\Users\Murad\source\repos\TelebeProqrami\TelebeProqrami\bin\Debug\TelebeProqrami.exe
+C:\Users\Murad\source\repos\TelebeProqrami\TelebeProqrami\bin\Debug\TelebeProqrami.pdb
+C:\Users\Murad\source\repos\TelebeProqrami\TelebeProqrami\bin\Debug\EntityFramework.dll
+C:\Users\Murad\source\repos\TelebeProqrami\TelebeProqrami\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Murad\source\repos\TelebeProqrami\TelebeProqrami\bin\Debug\EntityFramework.xml
+C:\Users\Murad\source\repos\TelebeProqrami\TelebeProqrami\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Murad\source\repos\TelebeProqrami\TelebeProqrami\obj\Debug\TelebeProqrami.csprojAssemblyReference.cache
+C:\Users\Murad\source\repos\TelebeProqrami\TelebeProqrami\obj\Debug\TelebeProqrami.Form1.resources
+C:\Users\Murad\source\repos\TelebeProqrami\TelebeProqrami\obj\Debug\TelebeProqrami.Properties.Resources.resources
+C:\Users\Murad\source\repos\TelebeProqrami\TelebeProqrami\obj\Debug\TelebeProqrami.csproj.GenerateResource.cache
+C:\Users\Murad\source\repos\TelebeProqrami\TelebeProqrami\obj\Debug\TelebeProqrami.csproj.CoreCompileInputs.cache
+C:\Users\Murad\source\repos\TelebeProqrami\TelebeProqrami\obj\Debug\TelebeProqrami.csproj.CopyComplete
+C:\Users\Murad\source\repos\TelebeProqrami\TelebeProqrami\obj\Debug\TelebeProqrami.exe
+C:\Users\Murad\source\repos\TelebeProqrami\TelebeProqrami\obj\Debug\TelebeProqrami.pdb

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbTelebelerModelStoreContainer" CdmEntityContainer="dbTelebelerEntities">
+    <EntitySetMapping Name="TBL_Dersler">
+      <EntityTypeMapping TypeName="dbTelebelerModel.TBL_Dersler">
+        <MappingFragment StoreEntitySet="TBL_Dersler">
+          <ScalarProperty Name="DersID" ColumnName="DersID" />
+          <ScalarProperty Name="DersAD" ColumnName="DersAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_Qeydler">
+      <EntityTypeMapping TypeName="dbTelebelerModel.TBL_Qeydler">
+        <MappingFragment StoreEntitySet="TBL_Qeydler">
+          <ScalarProperty Name="QeydID" ColumnName="QeydID" />
+          <ScalarProperty Name="Telebe" ColumnName="Telebe" />
+          <ScalarProperty Name="Ders" ColumnName="Ders" />
+          <ScalarProperty Name="Imtahan1" ColumnName="Imtahan1" />
+          <ScalarProperty Name="Imtahan2" ColumnName="Imtahan2" />
+          <ScalarProperty Name="Imtahan3" ColumnName="Imtahan3" />
+          <ScalarProperty Name="Ortalama" ColumnName="Ortalama" />
+          <ScalarProperty Name="Veziyyet" ColumnName="Veziyyet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_Telebeler">
+      <EntityTypeMapping TypeName="dbTelebelerModel.TBL_Telebeler">
+        <MappingFragment StoreEntitySet="TBL_Telebeler">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="Foto" ColumnName="Foto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_Klublar">
+      <EntityTypeMapping TypeName="dbTelebelerModel.TBL_Klublar">
+        <MappingFragment StoreEntitySet="TBL_Klublar">
+          <ScalarProperty Name="KlubAD" ColumnName="KlubAD" />
+          <ScalarProperty Name="KlubID" ColumnName="KlubID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="TelebeQeydleri" FunctionName="dbTelebelerModel.Store.TelebeQeydleri">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbTelebelerModel.TelebeQeydleri_Result">
+          <ScalarProperty Name="QeydID" ColumnName="QeydID" />
+          <ScalarProperty Name="Telebe" ColumnName="Telebe" />
+          <ScalarProperty Name="DersAD" ColumnName="DersAD" />
+          <ScalarProperty Name="Imtahan1" ColumnName="Imtahan1" />
+          <ScalarProperty Name="Imtahan2" ColumnName="Imtahan2" />
+          <ScalarProperty Name="Imtahan3" ColumnName="Imtahan3" />
+          <ScalarProperty Name="Ortalama" ColumnName="Ortalama" />
+          <ScalarProperty Name="Veziyyet" ColumnName="Veziyyet" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

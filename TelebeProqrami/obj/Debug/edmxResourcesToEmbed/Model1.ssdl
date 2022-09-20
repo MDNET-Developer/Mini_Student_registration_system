@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbTelebelerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TBL_Dersler">
+    <Key>
+      <PropertyRef Name="DersID" />
+    </Key>
+    <Property Name="DersID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DersAD" Type="nvarchar" MaxLength="77" />
+  </EntityType>
+  <EntityType Name="TBL_Klublar">
+    <Key>
+      <PropertyRef Name="KlubID" />
+    </Key>
+    <Property Name="KlubID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KlubAD" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TBL_Qeydler">
+    <Key>
+      <PropertyRef Name="QeydID" />
+    </Key>
+    <Property Name="QeydID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Telebe" Type="int" />
+    <Property Name="Ders" Type="int" />
+    <Property Name="Imtahan1" Type="smallint" />
+    <Property Name="Imtahan2" Type="smallint" />
+    <Property Name="Imtahan3" Type="smallint" />
+    <Property Name="Ortalama" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="Veziyyet" Type="bit" />
+  </EntityType>
+  <EntityType Name="TBL_Telebeler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+    <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
+    <Property Name="Foto" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK_TBL_Qeydler_TBL_Dersler">
+    <End Role="TBL_Dersler" Type="Self.TBL_Dersler" Multiplicity="0..1" />
+    <End Role="TBL_Qeydler" Type="Self.TBL_Qeydler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_Dersler">
+        <PropertyRef Name="DersID" />
+      </Principal>
+      <Dependent Role="TBL_Qeydler">
+        <PropertyRef Name="Ders" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_Qeydler_TBL_Telebeler">
+    <End Role="TBL_Telebeler" Type="Self.TBL_Telebeler" Multiplicity="0..1" />
+    <End Role="TBL_Qeydler" Type="Self.TBL_Qeydler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_Telebeler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_Qeydler">
+        <PropertyRef Name="Telebe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="TelebeQeydleri" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="dbTelebelerModelStoreContainer">
+    <EntitySet Name="TBL_Dersler" EntityType="Self.TBL_Dersler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_Klublar" EntityType="Self.TBL_Klublar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_Qeydler" EntityType="Self.TBL_Qeydler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_Telebeler" EntityType="Self.TBL_Telebeler" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_TBL_Qeydler_TBL_Dersler" Association="Self.FK_TBL_Qeydler_TBL_Dersler">
+      <End Role="TBL_Dersler" EntitySet="TBL_Dersler" />
+      <End Role="TBL_Qeydler" EntitySet="TBL_Qeydler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_Qeydler_TBL_Telebeler" Association="Self.FK_TBL_Qeydler_TBL_Telebeler">
+      <End Role="TBL_Telebeler" EntitySet="TBL_Telebeler" />
+      <End Role="TBL_Qeydler" EntitySet="TBL_Qeydler" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
